@@ -7,7 +7,7 @@
   "main": "./main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix src/**/* --ext .js,.ts",
+    "lint": "eslint --fix src/**/* --ignore-pattern src/components/static --ignore-pattern src/settings/static  --ext .js,.ts",
     "build": "electron-vite build"
   },
   "author": "Adpro",
