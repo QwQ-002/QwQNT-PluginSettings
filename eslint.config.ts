@@ -24,6 +24,6 @@ export default ts.config(
       'prefer-const': 'off',
       quotes: ['error', 'single', { allowTemplateLiterals: true }],
     },
-    ignores: ['dist'],
+    ignores: ['dist', 'src/**/static/**/*'],
   },
 );
