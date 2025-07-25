@@ -1,8 +1,8 @@
 {
   "$schema": "./plugin.schema.json",
-  "name": "qwqnttemplate-vite-pnpm",
+  "name": "qwqnt-plugin_settings",
   "version": "1.0.0",
-  "description": "A plugin template for QwQNT, powered by Vite & Typescript",
+  "description": "Support QwQNT plugins to add its settings page to settings of QQNT.",
   "type": "module",
   "main": "./main/index.js",
   "scripts": {
@@ -31,7 +31,7 @@
   },
   "packageManager": "pnpm@10.13.1",
   "qwqnt": {
-    "name": "QwQNT 插件模板",
+    "name": "QwQNT 插件设置",
     "inject": {
       "preload": "./preload/index.cjs",
       "renderer": "./renderer/index.js"

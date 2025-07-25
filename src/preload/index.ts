@@ -1,7 +1,8 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
-contextBridge.exposeInMainWorld('QwQNTTemplate', {
-  greeting: () => {
-    ipcRenderer.send('QwQNTTemplate.greeting');
-  }
+contextBridge.exposeInMainWorld('QwQNTPluginSettings', {
+  readConfig: <T>(id: string): Promise<T> => ipcRenderer.invoke('QwQNTPluginSettings.readConfig', id),
+  writeConfig: <T>(id: string, newConfig: T) => {
+    ipcRenderer.send('QwQNTPluginSettings.writeConfig', id, newConfig);
+  },
 });

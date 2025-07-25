@@ -22,7 +22,7 @@ export default ts.config(
       '@typescript-eslint/no-unsafe-function-type': 'off',
       'no-empty': 'off',
       'prefer-const': 'off',
-      quotes: ['error', 'single', { allowTemplateLiterals: false }],
+      quotes: ['error', 'single', { allowTemplateLiterals: true }],
     },
     ignores: ['dist'],
   },

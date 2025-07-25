@@ -1,10 +1,48 @@
+import { join } from 'path';
+import { access, mkdir, readFile, writeFile } from 'fs/promises';
 import { ipcMain } from 'electron';
 
-ipcMain.on('QwQNTTemplate.greeting', () => {
-  alert('Main');
-});
+const checkDirOrFileExist = async (path: string): Promise<boolean> => {
+  let exist: boolean;
 
-qwqnt.main.hooks.whenBrowserWindowCreated.peek(window => {
-  console.log('A window has just been created');
-  console.log(window);
+  try{
+    await access(path);
+    exist = true;
+  } catch{
+    exist = false;
+  }
+
+  return exist;
+};
+
+const writeConfig = async <T>(id: string, newConfig: T) => {
+  const configsPath: string = qwqnt.framework.paths.configs;
+  const configPath = join(configsPath, id, 'config.json');
+  const rawNewConfig = JSON.stringify(newConfig, undefined, 2);
+
+  await writeFile(configPath, rawNewConfig, 'utf-8');
+};
+const readConfig = async <T>(id: string): Promise<T> => {
+  const configsPath: string = qwqnt.framework.paths.configs;
+  const idPath = join(configsPath, id);
+  const configPath = join(idPath, 'config.json');
+
+  if(!await checkDirOrFileExist(idPath)) await mkdir(idPath);
+  if(!await checkDirOrFileExist(configPath)) await writeConfig(id, {});
+
+  return JSON.parse(await readFile(configPath, 'utf-8'));
+};
+
+ipcMain.handle('QwQNTPluginSettings.readConfig', (_, id: string) => readConfig(id));
+
+ipcMain.on('QwQNTPluginSettings.writeConfig', <T>(_, id: string, newConfig: T) => writeConfig(id, newConfig));
+
+Object.defineProperty(global, 'PluginSettings', {
+  value: {
+    main: {
+      readConfig,
+      writeConfig,
+    },
+  },
+  writable: true,
 });
