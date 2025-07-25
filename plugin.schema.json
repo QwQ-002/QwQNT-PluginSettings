@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "JSON schema for package.json files in QwQNT Framework plugins",
+  "allOf": [
+    {
+      "$ref": "https://json.schemastore.org/package.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "qwqnt": {
+          "type": "object",
+          "description": "QwQNT Framework specific fields.",
+          "properties": {
+            "inject": {
+              "type": "object",
+              "description": "Entry points of the plugin.",
+              "properties": {
+                "preload": {
+                  "type": "string"
+                },
+                "renderer": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "./plugin.schema.json",
+  "name": "qwqnttemplate-vite-pnpm",
+  "version": "1.0.0",
+  "description": "A plugin template for QwQNT, powered by Vite & Typescript",
+  "type": "module",
+  "main": "./main/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix src/**/* --ext .js,.ts",
+    "build": "electron-vite build"
+  },
+  "author": "Adpro",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-toolkit/eslint-config-ts": "^3.1.0",
+    "@electron-toolkit/tsconfig": "^1.0.1",
+    "@eslint/js": "^9.31.0",
+    "@types/node": "^24.1.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "electron": "^37.2.3",
+    "electron-vite": "^4.0.0",
+    "eslint": "^9.31.0",
+    "jiti": "^2.4.2",
+    "typescript-eslint": "^8.38.0",
+    "unplugin-zip-pack": "^1.0.3",
+    "vite": "^7.0.5",
+    "vite-plugin-checker": "^0.10.1",
+    "vite-plugin-cp": "^6.0.3"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "qwqnt": {
+    "name": "QwQNT 插件模板",
+    "inject": {
+      "preload": "./preload/index.cjs",
+      "renderer": "./renderer/index.js"
+    }
+  }
+}

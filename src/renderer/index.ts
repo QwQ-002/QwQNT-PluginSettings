@@ -1,0 +1,3 @@
+alert('Renderer');
+
+QwQNTTemplate.greeting();
