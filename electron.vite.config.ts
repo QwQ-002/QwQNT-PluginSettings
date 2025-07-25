@@ -25,7 +25,7 @@ const ConfigBuilder = (type: 'main' | 'preload') => defineViteConfig({
     viteChecker({
       typescript: true,
       eslint: {
-        lintCommand: 'eslint --fix src/**/* --ext .js,.ts',
+        lintCommand: 'pnpm lint',
       },
     }),
   ],
@@ -50,7 +50,7 @@ export default defineConfig({
       viteChecker({
         typescript: true,
         eslint: {
-          lintCommand: 'eslint --fix src/**/* --ext .js,.ts',
+          lintCommand: 'pnpm lint',
         },
       }),
       viteCp({
