@@ -1,7 +1,6 @@
 import { defineConfig } from 'electron-vite';
 import { defineConfig as defineViteConfig } from 'vite';
 import { resolve } from 'path';
-import viteChecker from 'vite-plugin-checker';
 import viteCp from 'vite-plugin-cp';
 import viteZipPack from 'unplugin-zip-pack/vite';
 import Plugin from './package.json';
@@ -21,14 +20,6 @@ const BaseConfig = defineViteConfig({
 const ConfigBuilder = (type: 'main' | 'preload') => defineViteConfig({
   ...BaseConfig,
 
-  plugins: [
-    viteChecker({
-      typescript: true,
-      eslint: {
-        lintCommand: 'eslint --fix src/**/* --ignore-pattern src/components/static --ignore-pattern src/settings/static  --ext .js,.ts',
-      },
-    }),
-  ],
   build: {
     minify: true,
     outDir: resolve(OUTPUT_DIR, `./${type}`),
@@ -47,12 +38,6 @@ export default defineConfig({
     ...BaseConfig,
 
     plugins: [
-      viteChecker({
-        typescript: true,
-        eslint: {
-          lintCommand: 'eslint --fix src/**/* --ignore-pattern src/components/static --ignore-pattern src/settings/static  --ext .js,.ts',
-        },
-      }),
       viteCp({
         targets: [{ src: './package.json', dest: 'dist' }],
       }),

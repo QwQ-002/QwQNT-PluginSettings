@@ -7,7 +7,7 @@
   "main": "./main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix src/**/* --ignore-pattern src/components/static --ignore-pattern src/settings/static  --ext .js,.ts",
+    "lint": "eslint --fix src/**/* --ext .js,.ts",
     "build": "electron-vite build"
   },
   "author": "Adpro",
@@ -26,7 +26,6 @@
     "typescript-eslint": "^8.38.0",
     "unplugin-zip-pack": "^1.0.3",
     "vite": "^7.0.5",
-    "vite-plugin-checker": "^0.10.1",
     "vite-plugin-cp": "^6.0.3"
   },
   "packageManager": "pnpm@10.13.1",
