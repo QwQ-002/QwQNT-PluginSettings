@@ -6,7 +6,7 @@
 
 ## 使用
 
-在 `package.json` 中， `qwqnt` 对象下，加入 `settings` 字段，其作为你插件设置页加载的检索 id 。若不设置，则默认使用 `name` 字段内容。
+在 `package.json` 中， `qwqnt` 对象下，加入 `settings` 字段，其作为你插件设置页加载的检索 id 。若不设置，则默认使用 `package.json` 根对象下的 `name` 字段内容。
 
 在 Renderer 中，使用 `PluginSettings.renderer.registerPluginSettings` 注册设置窗口。
 
