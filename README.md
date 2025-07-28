@@ -19,7 +19,9 @@
 
 ```typescript
 // renderer
-PluginSettings.renderer.registerPluginSettings('<your_id>', div);
+RendererEvents.onSettingsWindowCreated(() => {
+  PluginSettings.renderer.registerPluginSettings('<your_id>', div);
+});
 ```
 
 你可以分别在 renderer 和 main 中读写配置。
