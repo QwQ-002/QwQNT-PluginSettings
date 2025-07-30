@@ -1,6 +1,5 @@
-import html from './template';
-
-const template = new DOMParser().parseFromString(html, 'text/html');
+import templateMap from './templateBuilder';
+import style from './static/style.css?raw';
 
 class SettingElementStyleSheetsClass {
 	#styleSheets: CSSStyleSheet[] = [];
@@ -40,10 +39,10 @@ class SettingElementBase extends HTMLElement {
 		super();
 
 		this.attachShadow({ mode: 'open' });
-		this._template = template.getElementById(element_id) as HTMLTemplateElement;
+		this._template = templateMap.get(element_id)!;
 		this._content = this._template.content.cloneNode(true);
-		this._slot = this.shadowRoot!.querySelector('slot')!;
 		this.shadowRoot!.append(this._content);
+		this._slot = this.shadowRoot!.querySelector('slot')!;
 		SettingElementStyleSheets.on((styleSheets) => {
 			this.shadowRoot!.adoptedStyleSheets = styleSheets;
 		});
@@ -56,7 +55,7 @@ class SettingElementBase extends HTMLElement {
 	};
 };
 
-SettingElementStyleSheets.styleSheets = [new CSSStyleSheet({ baseURL: './static/style.css' })];
+SettingElementStyleSheets.styleSheets = [await new CSSStyleSheet().replace(style)];
 
 
 customElements.define('setting-section', class extends SettingElementBase {
