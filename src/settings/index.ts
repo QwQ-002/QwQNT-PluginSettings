@@ -1,5 +1,5 @@
 import './static/style.css';
-import { IQwQNTPlugins } from '../types/QwQNTPlugin';
+import { IQwQNTPlugin } from '../types/QwQNTPlugin';
 
 export class SettingInterface {
   #qwqnt_nav_bar = document.createElement('div');
@@ -35,12 +35,12 @@ export class SettingInterface {
     });
   };
 
-  add(plugin: IQwQNTPlugins){
+  add(plugin: IQwQNTPlugin){
     const nav_item = document.querySelector('.setting-tab .nav-item')!.cloneNode(true);
     const view = document.createElement('div');
     (nav_item as HTMLElement).classList.remove('nav-item-active');
-    (nav_item as HTMLElement).setAttribute('data-name', plugin.packageJson.name);
-    (nav_item as HTMLElement).querySelector('.name')!.textContent = plugin.packageJson.qwqnt.name;
+    (nav_item as HTMLElement).setAttribute('data-name', plugin.name);
+    (nav_item as HTMLElement).querySelector('.name')!.textContent = plugin.qwqnt.name;
     nav_item.addEventListener('click', event => {
       if(!(event.currentTarget as HTMLElement).classList.contains('nav-item-active')){
         this.#qwqnt_setting_view.textContent = null;
@@ -48,7 +48,7 @@ export class SettingInterface {
       }
     });
     this.#qwqnt_nav_bar.append(nav_item);
-    view.classList.add('tab-view', plugin.packageJson.name);
+    view.classList.add('tab-view', plugin.name);
 
     return view;
   };

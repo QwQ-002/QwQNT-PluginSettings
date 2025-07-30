@@ -6,21 +6,18 @@
 
 ## 使用
 
-在 `package.json` 中， `qwqnt` 对象下，加入 `settings` 字段，其作为你插件设置页加载的检索 id 。若不设置，则默认使用 `package.json` 根对象下的 `name` 字段内容。
-
 在 Renderer 中，使用 `PluginSettings.renderer.registerPluginSettings` 注册设置窗口。
 
-`PluginSettings.renderer.registerPluginSettings` 接受两个参数，`id` 和 `html` 。
+`PluginSettings.renderer.registerPluginSettings` 接受一个参数，`packageJson` 。
 
-- `id`: `string` 类型，插件设置页加载的检索 id 。
-- `html`: 接受两种类型， `string` 或 `HTMLDivElement` 类型，设置页的 HTML 代码。
+- `packageJson`: 插件的 `package.json` 。
 
 下面是一个实例：
 
 ```typescript
 // renderer
 RendererEvents.onSettingsWindowCreated(() => {
-  PluginSettings.renderer.registerPluginSettings('<your_id>', div);
+  const view = PluginSettings.renderer.registerPluginSettings(packageJson);
 });
 ```
 
@@ -29,6 +26,8 @@ RendererEvents.onSettingsWindowCreated(() => {
 对于 renderer ，你可以使用 `PluginSettings.renderer` 下的方法。
 
 对于 main ，你可以使用 `PluginSettings.main` 下的方法。
+
+具体方法见下方定义。
 
 读配置，使用 `readConfig` 方法，传入 `id` 和 `defaultConfig`（可选） 参数。
 
@@ -46,13 +45,25 @@ declare namespace RendererEvents {
   const onSettingsWindowCreated: (callback: () => void) => void;
 }
 
+interface IQwQNTPlugin {
+  name: string;
+  qwqnt: {
+    name: string;
+    inject: {
+      renderer?: string;
+      preload?: string;
+    };
+    settings?: string;
+  };
+}
+
 declare namespace PluginSettings {
   interface ICommon {
     readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
-    registerPluginSettings: (id: string, html: string | HTMLDivElement) => void;
+    registerPluginSettings: (packageJson: IQwQNTPlugin) => HTMLDivElement;
   }
 
   const main: ICommon;
