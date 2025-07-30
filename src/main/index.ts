@@ -34,7 +34,7 @@ const readConfig = async <T>(id: string, defaultConfig?: T): Promise<T> => {
 };
 
 ipcMain.handle('QwQNTPluginSettings.readConfig', <T>(_, id: string, defaultConfig?: T) => {
-  readConfig(id, defaultConfig);
+  return readConfig(id, defaultConfig);
 });
 
 ipcMain.on('QwQNTPluginSettings.writeConfig', <T>(_, id: string, newConfig: T) => {
