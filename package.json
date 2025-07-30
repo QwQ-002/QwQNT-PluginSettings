@@ -1,7 +1,7 @@
 {
   "$schema": "./plugin.schema.json",
   "name": "qwqnt-plugin_settings",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Support QwQNT plugins to add its settings page to settings of QQNT.",
   "type": "module",
   "main": "./main/index.js",
