@@ -6,7 +6,7 @@ declare namespace RendererEvents {
 
 declare namespace PluginSettings {
   interface ICommon {
-    readConfig: <T>(id: string) => Promise<T>;
+    readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
@@ -18,6 +18,6 @@ declare namespace PluginSettings {
 }
 
 declare namespace QwQNTPluginSettings {
-  const readConfig: <T>(id: string) => Promise<T>;
+  const readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
   const writeConfig: <T>(id: string, newConfig: T) => void;
 }

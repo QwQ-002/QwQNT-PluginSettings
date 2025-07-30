@@ -30,7 +30,9 @@ RendererEvents.onSettingsWindowCreated(() => {
 
 对于 main ，你可以使用 `PluginSettings.main` 下的方法。
 
-读配置，使用 `readConfig` 方法，传入 `id` 参数。
+读配置，使用 `readConfig` 方法，传入 `id` 和 `defaultConfig`（可选） 参数。
+
+`defaultConfig` 参数将在配置文件不存在，自动创建配置文件时，默认写入文件。
 
 写配置，使用 `writeConfig` 方法，传入 `id` 和 `newConfig` 参数。
 
@@ -46,7 +48,7 @@ declare namespace RendererEvents {
 
 declare namespace PluginSettings {
   interface ICommon {
-    readConfig: <T>(id: string) => Promise<T>;
+    readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
