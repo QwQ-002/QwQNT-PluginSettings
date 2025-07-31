@@ -1,12 +1,16 @@
-import { C as CoreExports, F as FrameworkExports } from './exports-BGkkLqe5.js';
+import { C as ContextGlobal, P as Plugin } from '../types-context-DXNxnjxt.js';
 
-interface ContextRenderer {
-    core: CoreExports;
-    framework: FrameworkExports;
+declare function ipcRendererImport(channel: string): any;
+
+interface ContextPreload extends ContextGlobal {
+    preload: {
+        import: typeof ipcRendererImport;
+    };
 }
 declare global {
-    const qwqnt: Readonly<ContextRenderer>;
-    function evalModule(script: string): void;
+    const qwqnt: Readonly<ContextPreload>;
+    const __self: Plugin;
+    function evalModule(script: string, self?: unknown): void;
 }
 
-export type { ContextRenderer };
+export type { ContextPreload };
