@@ -53,7 +53,6 @@ interface IQwQNTPlugin {
       renderer?: string;
       preload?: string;
     };
-    settings?: string;
   };
 }
 
