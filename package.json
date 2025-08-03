@@ -19,7 +19,7 @@
     "@types/node": "^24.1.0",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
-    "electron": "^37.2.4",
+    "electron": "^37.2.5",
     "electron-vite": "^4.0.0",
     "eslint": "^9.32.0",
     "jiti": "^2.5.1",
