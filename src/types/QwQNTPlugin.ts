@@ -9,8 +9,3 @@ export interface IQwQNTPlugin {
     };
   };
 };
-
-export interface IQwQNTPlugins {
-  packageJson: IQwQNTPlugin;
-  path: string;
-};

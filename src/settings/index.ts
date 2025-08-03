@@ -48,7 +48,7 @@ export class SettingInterface {
     const nav_item = document.querySelector('.setting-tab .nav-item')!.cloneNode(true);
     const view = document.createElement('div');
     if(plugin.qwqnt.icon){
-      const path = await QwQNTPluginSettings.parsePath(qwqnt.framework.plugins[plugin.name].path, plugin.qwqnt.icon);
+      const path = await QwQNTPluginSettings.parsePath(qwqnt.framework.plugins[plugin.name].meta.path, plugin.qwqnt.icon);
       const plugin_thumb = qwqnt.framework.protocol.pathToStorageUrl(path);
       const text = await appropriateIcon(plugin_thumb);
       (nav_item as HTMLElement).querySelector('.q-icon')!.innerHTML = text;

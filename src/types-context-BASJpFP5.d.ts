@@ -1,15 +1,29 @@
 declare function storageUrlToPath(url: string): string;
-declare function pathToStorageUrl(path: string, prefix?: string): string;
+declare function pathToStorageUrl(path: string, options?: Record<string, string> & {
+    prefix?: string;
+}): string;
 declare const protocolExports: {
     readonly storageUrlToPath: typeof storageUrlToPath;
     readonly pathToStorageUrl: typeof pathToStorageUrl;
 };
 type ElectronProtocol = typeof protocolExports;
 
-interface Plugin {
+interface PluginManifest {
+    inject?: {
+        preload?: string;
+        renderer?: string;
+    };
+    dependencies?: Record<string, string>;
+}
+interface PluginMeta {
     namespace: string;
     path: string;
-    packageJson: object;
+    packageJson: any & {
+        qwqnt?: PluginManifest;
+    };
+}
+interface Plugin {
+    meta: PluginMeta;
 }
 
 type TomlValue = string | number | boolean | TomlValue[] | {

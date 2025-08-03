@@ -23,6 +23,16 @@
                   "type": "string"
                 }
               }
+            },
+            "dependencies": {
+              "type": "object",
+              "description": "List of dependencies. Use `?` at the end of the key to mark optional dependencies.",
+              "patternProperties": {
+                "^(@[a-z0-9._-]+/[a-z0-9._-]+|[a-z0-9._-]+)\\??$": {
+                  "type": "string",
+                  "description": "Semver range following npm's dependencies format."
+                }
+              }
             }
           }
         }

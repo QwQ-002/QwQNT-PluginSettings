@@ -4,24 +4,13 @@ declare namespace RendererEvents {
   const onSettingsWindowCreated: (callback: () => void) => void;
 }
 
-interface IQwQNTPlugin {
-  name: string;
-  qwqnt: {
-    name: string;
-    inject: {
-      renderer?: string;
-      preload?: string;
-    };
-  };
-}
-
 declare namespace PluginSettings {
   interface ICommon {
     readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
-    registerPluginSettings: (packageJson: IQwQNTPlugin) => Promise<HTMLDivElement>;
+    registerPluginSettings: (packageJson: import('./types/QwQNTPlugin').IQwQNTPlugin) => Promise<HTMLDivElement>;
   }
 
   const main: ICommon;
