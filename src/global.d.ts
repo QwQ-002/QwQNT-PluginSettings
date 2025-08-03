@@ -21,7 +21,7 @@ declare namespace PluginSettings {
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
-    registerPluginSettings: (packageJson: IQwQNTPlugin) => HTMLDivElement;
+    registerPluginSettings: (packageJson: IQwQNTPlugin) => Promise<HTMLDivElement>;
   }
 
   const main: ICommon;
@@ -31,4 +31,5 @@ declare namespace PluginSettings {
 declare namespace QwQNTPluginSettings {
   const readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
   const writeConfig: <T>(id: string, newConfig: T) => void;
+  const parsePath: (...pathParts: string[]) => Promise<string>;
 }

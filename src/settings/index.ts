@@ -1,6 +1,15 @@
 import './static/style.css';
 import { IQwQNTPlugin } from '../types/QwQNTPlugin';
 
+const appropriateIcon = async (pluginIconUrlUsingStoragePotocol: string) => {
+  if(pluginIconUrlUsingStoragePotocol.endsWith('.svg')){
+    return await (await fetch(pluginIconUrlUsingStoragePotocol)).text();
+  }
+  else{
+    return `<img width=24 height=24 src="${pluginIconUrlUsingStoragePotocol}"/>`;
+  }
+};
+
 export class SettingInterface {
   #qwqnt_nav_bar = document.createElement('div');
   #qwqnt_setting_view = document.createElement('div');
@@ -35,9 +44,15 @@ export class SettingInterface {
     });
   };
 
-  add(plugin: IQwQNTPlugin){
+  async add(plugin: IQwQNTPlugin){
     const nav_item = document.querySelector('.setting-tab .nav-item')!.cloneNode(true);
     const view = document.createElement('div');
+    if(plugin.qwqnt.icon){
+      const path = await QwQNTPluginSettings.parsePath(qwqnt.framework.plugins[plugin.name].path, plugin.qwqnt.icon);
+      const plugin_thumb = qwqnt.framework.protocol.pathToStorageUrl(path);
+      const text = await appropriateIcon(plugin_thumb);
+      (nav_item as HTMLElement).querySelector('.q-icon')!.innerHTML = text;
+    }
     (nav_item as HTMLElement).classList.remove('nav-item-active');
     (nav_item as HTMLElement).setAttribute('data-name', plugin.name);
     (nav_item as HTMLElement).querySelector('.name')!.textContent = plugin.qwqnt.name;

@@ -7,4 +7,7 @@ contextBridge.exposeInMainWorld('QwQNTPluginSettings', {
   writeConfig: <T>(id: string, newConfig: T) => {
     ipcRenderer.send('QwQNTPluginSettings.writeConfig', id, newConfig);
   },
+  parsePath: (...pathParts: string[]): Promise<string> => {
+    return ipcRenderer.invoke('QwQNTPluginSettings.parsePath', ...pathParts);
+  },
 });

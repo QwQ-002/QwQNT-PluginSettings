@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join, normalize } from 'path';
 import { access, mkdir, readFile, writeFile } from 'fs/promises';
 import { ipcMain } from 'electron';
 
@@ -32,6 +32,10 @@ const readConfig = async <T>(id: string, defaultConfig?: T): Promise<T> => {
 
   return JSON.parse(await readFile(configPath, 'utf-8'));
 };
+
+ipcMain.handle('QwQNTPluginSettings.parsePath', (_, ...pathParts: string[]) => {
+  return normalize(join(...pathParts));
+});
 
 ipcMain.handle('QwQNTPluginSettings.readConfig', <T>(_, id: string, defaultConfig?: T) => {
   return readConfig(id, defaultConfig);
