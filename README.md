@@ -16,8 +16,8 @@
 
 ```typescript
 // renderer
-RendererEvents.onSettingsWindowCreated(() => {
-  const view = PluginSettings.renderer.registerPluginSettings(packageJson);
+RendererEvents.onSettingsWindowCreated(async () => {
+  const view = await PluginSettings.renderer.registerPluginSettings(packageJson);
 });
 ```
 
@@ -49,7 +49,8 @@ interface IQwQNTPlugin {
   name: string;
   qwqnt: {
     name: string;
-    inject: {
+    icon?: string;
+    inject?: {
       renderer?: string;
       preload?: string;
     };
@@ -62,7 +63,7 @@ declare namespace PluginSettings {
     writeConfig: <T>(id: string, newConfig: T) => void;
   }
   interface IRenderer extends ICommon {
-    registerPluginSettings: (packageJson: IQwQNTPlugin) => HTMLDivElement;
+    registerPluginSettings: (packageJson: IQwQNTPlugin) => Promise<HTMLDivElement>;
   }
 
   const main: ICommon;
