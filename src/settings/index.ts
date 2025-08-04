@@ -1,4 +1,3 @@
-import './static/style.css';
 import { IQwQNTPlugin } from '../types/QwQNTPlugin';
 
 const appropriateIcon = async (pluginIconUrlUsingStoragePotocol: string) => {

@@ -1,9 +1,11 @@
 import '../components/index';
+import settingsStyle from '../settings/static/style.css?raw';
 import { SettingInterface } from '../settings/index';
 import type { IQwQNTPlugin } from '../types/QwQNTPlugin';
 
 const settingInterface = new Promise<SettingInterface>(resolve => {
   RendererEvents.onSettingsWindowCreated(() => {
+    document.head.insertAdjacentHTML('beforeend', `<style>${settingsStyle}</style>`);
     resolve(new SettingInterface());
   });
 });
