@@ -14,6 +14,7 @@ declare namespace PluginSettings {
   }
 
   const main: ICommon;
+  const preload: ICommon;
   const renderer: IRenderer;
 }
 

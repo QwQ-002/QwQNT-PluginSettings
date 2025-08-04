@@ -25,6 +25,8 @@ RendererEvents.onSettingsWindowCreated(async () => {
 
 对于 renderer ，你可以使用 `PluginSettings.renderer` 下的方法。
 
+对于 preload ，你可以使用 `PluginSettings.preload` 下的方法。
+
 对于 main ，你可以使用 `PluginSettings.main` 下的方法。
 
 具体方法见下方定义。
@@ -67,6 +69,7 @@ declare namespace PluginSettings {
   }
 
   const main: ICommon;
+  const preload: ICommon;
   const renderer: IRenderer;
 }
 ```
