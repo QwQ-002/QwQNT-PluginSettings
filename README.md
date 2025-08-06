@@ -61,8 +61,10 @@ interface IQwQNTPlugin {
 
 declare namespace PluginSettings {
   interface ICommon {
-    readConfig: <T>(id: string, defaultConfig?: T) => Promise<T>;
-    writeConfig: <T>(id: string, newConfig: T) => void;
+    readConfig: <T>(id: string, defaultConfig?: T) => T;
+    writeConfig: <T>(id: string, newConfig: T) => boolean;
+    openPath: (path: string) => void;
+    openExternal: (url: string) => void;
   }
   interface IRenderer extends ICommon {
     registerPluginSettings: (packageJson: IQwQNTPlugin) => Promise<HTMLDivElement>;
