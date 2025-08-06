@@ -20,6 +20,8 @@ Object.defineProperty(window, 'PluginSettings', {
       registerPluginSettings,
       readConfig: QwQNTPluginSettings.readConfig,
       writeConfig: QwQNTPluginSettings.writeConfig,
+      openPath: QwQNTPluginSettings.openPath,
+      openExternal: QwQNTPluginSettings.openExternal,
     },
   },
   writable: true,
