@@ -3,7 +3,7 @@
   "name": "qwqnt-plugin_settings",
   "version": "1.2.3",
   "description": "Support QwQNT plugins to add its settings page to settings of QQNT.",
-  "type": "module",
+  "type": "commonjs",
   "main": "./main/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -32,7 +32,7 @@
   "qwqnt": {
     "name": "QwQNT 插件设置",
     "inject": {
-      "preload": "./preload/index.cjs",
+      "preload": "./preload/index.js",
       "renderer": "./renderer/index.js"
     },
     "dependencies": {
