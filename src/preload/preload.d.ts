@@ -1,4 +1,4 @@
-import { C as ContextGlobal, P as Plugin } from '../types-context-BASJpFP5.js';
+import { C as ContextGlobal, P as Plugin } from '../types-context-D3vGm2Vy.js';
 
 declare function ipcRendererImport(channel: string): any;
 

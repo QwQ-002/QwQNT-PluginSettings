@@ -1,5 +1,5 @@
 declare function storageUrlToPath(url: string): string;
-declare function pathToStorageUrl(path: string, options?: Record<string, string> & {
+declare function pathToStorageUrl(path: string, options?: {
     prefix?: string;
 }): string;
 declare const protocolExports: {
@@ -33,7 +33,7 @@ interface CoreExports {
     version: string;
     pathDll: string;
     configs: Record<string, TomlValue> & {
-        qwqnt: {
+        core: {
             save: string;
             load: string;
         };
@@ -44,7 +44,6 @@ interface FrameworkExports {
     paths: {
         configs: string;
         data: string;
-        logs: string;
         plugins: string;
         stylesheets: string;
     };

@@ -1,5 +1,5 @@
 import { WebContents, BrowserWindow } from 'electron';
-import { C as ContextGlobal } from '../types-context-BASJpFP5.js';
+import { C as ContextGlobal } from '../types-context-D3vGm2Vy.js';
 
 type TransformerSignal = typeof HookTransformer.DO_NOTHING | typeof HookTransformer.CONSUMED;
 declare class HookTransformer<T> extends Array<(value: T) => T | TransformerSignal | [TransformerSignal, T]> {
@@ -37,6 +37,10 @@ declare function ipcMainExport(channel: string, data: unknown): void;
 
 interface ContextMain extends ContextGlobal {
     main: {
+        deasync: {
+            loopWhile(predicate: () => boolean): void;
+            await<T>(promise: Promise<T>): T;
+        };
         hooks: HooksElectron;
         export: typeof ipcMainExport;
     };
