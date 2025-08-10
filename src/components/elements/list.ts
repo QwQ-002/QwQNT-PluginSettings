@@ -115,6 +115,7 @@ export class List extends BaseElement {
     dividers.forEach(node => node.remove());
     children.forEach((node, index) => {
       const divider = document.createElement('setting-divider') as Divider;
+      customElements.upgrade(node);
       switch(this.getDirection()){
         case 'column': {
           divider.setDirection('row');
