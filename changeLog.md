@@ -1,5 +1,4 @@
-# 1.2.4
+# 1.2.5
 
-1. 重构自定义组件
-2. 打包格式改为 cjs
-3. 向 main 、 preload 和 render 添加 openPath 和 openExternal 方法
+1. 修复 setting-list 内部元素在部分情况下没更新的问题
+2. 修复全局变量在 preload 中无法正常暴露的问题
