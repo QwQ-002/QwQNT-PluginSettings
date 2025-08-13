@@ -33,6 +33,10 @@ export class Switch extends BaseElement {
         background-color: var(--brand_standard);
       }
 
+      :host([is-active]) span {
+        transform: translate(12px);
+      }
+
       span {
         border-radius: 5px;
         box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 4px;
@@ -47,10 +51,6 @@ export class Switch extends BaseElement {
         width: 10px;
         z-index: 2;
         background: var(--icon_white);
-      }
-
-      :host([is-active]) span {
-        transform: translate(12px);
       }
     `;
   };

@@ -70,40 +70,40 @@ export class Modal extends BaseElement {
           border: var(--border_primary);
           border-radius: 8px;
           overflow: hidden;
-        }
 
-        .container {
-          background-color: var(--bg_bottom_standard);
-          overflow: hidden;
-        }
+          & .container {
+            background-color: var(--bg_bottom_standard);
+            overflow: hidden;
 
-        .header {
-          height: 28px;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-          position: relative;
-        }
+            & .header {
+              height: 28px;
+              border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+              position: relative;
 
-        .title {
-          font-family: 'PingFang SC';
-          font-size: 12px;
-          font-weight: 400;
-          line-height: 28px;
-          text-align: center;
-        }
+              & .title {
+                font-family: 'PingFang SC';
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 28px;
+                text-align: center;
+              }
 
-        .close {
-          width: 16px;
-          height: 16px;
-          position: absolute;
-          right: 4px;
-          top: 50%;
-          transform: translateY(-50%);
-          color: var(--icon-primary);
-        }
+              & .close {
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                right: 4px;
+                top: 50%;
+                transform: translateY(-50%);
+                color: var(--icon-primary);
+              }
+            }
 
-        .body {
-          border-radius: 8px;
-          padding: 20px 20px 0px 20px;
+            & .body {
+              border-radius: 8px;
+              padding: 20px 20px 0px 20px;
+            }
+          }
         }
       }
     `;

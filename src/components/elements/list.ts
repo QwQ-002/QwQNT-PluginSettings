@@ -20,8 +20,8 @@ export class List extends BaseElement {
     return /*html*/ `
       <setting-item data-direction='row' class='hidden'>
         <h2></h2>
-        <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-          <path d='M21 8L12 17L3 8' stroke='currentColor' stroke-width='1.5' stroke-linejoin='round'></path>
+        <svg viewBox='0 0 24 24'>
+          <use xlink:href="/_upper_/resource/icons/arrow_down_24.svg#arrow_down_24"></use>
         </svg>
       </setting-item>
       <slot></slot>
@@ -123,7 +123,7 @@ export class List extends BaseElement {
 
       requestAnimationFrame(() => {
         divider.setDirection(dividerDirection);
-        node.setDirection(dividerDirection);
+        node.setDirection?.(dividerDirection);
       });
 
       if(shouldInsertBefore) node.before(divider);
