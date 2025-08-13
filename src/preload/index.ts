@@ -26,7 +26,7 @@ contextBridge.exposeInMainWorld('QwQNTPluginSettings', {
   },
 });
 
-Object.defineProperty(window, 'PluginSettings', {
+Object.defineProperty(globalThis, 'PluginSettings', {
   value: {
     preload: {
       readConfig,
