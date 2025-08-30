@@ -2,6 +2,7 @@ import { defineConfig } from 'electron-vite';
 import { defineConfig as defineViteConfig } from 'vite';
 import { resolve } from 'path';
 import viteCp from 'vite-plugin-cp';
+import unpluginOxlint from 'unplugin-oxlint/vite';
 import viteZipPack from 'unplugin-zip-pack/vite';
 import Plugin from './package.json';
 
@@ -20,6 +21,12 @@ const BaseConfig = defineViteConfig({
 const ConfigBuilder = (type: 'main' | 'preload') => defineViteConfig({
   ...BaseConfig,
 
+  plugins: [
+    unpluginOxlint({
+      includes: ['src/**/*.js', 'src/**/*.ts'],
+      fix: true,
+    }),
+  ],
   build: {
     minify: true,
     outDir: resolve(OUTPUT_DIR, `./${type}`),
@@ -38,6 +45,10 @@ export default defineConfig({
     ...BaseConfig,
 
     plugins: [
+      unpluginOxlint({
+        includes: ['src/**/*.js', 'src/**/*.ts'],
+        fix: true,
+      }),
       viteCp({
         targets: [{ src: './package.json', dest: 'dist' }],
       }),

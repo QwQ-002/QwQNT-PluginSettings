@@ -10,6 +10,7 @@
     "src/global.d.ts"
   ],
   "compilerOptions": {
-    "composite": true
+    "composite": true,
+    "types": ["@qwqnt/types/preload", "@qwqnt/types/renderer"]
   }
 }
