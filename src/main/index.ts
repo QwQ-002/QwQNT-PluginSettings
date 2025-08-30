@@ -50,7 +50,7 @@ ipcMain.on('QwQNTPluginSettings.openPath', (_, path: string) => openPath(path));
 
 ipcMain.on('QwQNTPluginSettings.openExternal', (_, url: string) => openExternal(url));
 
-Object.defineProperty(global, 'PluginSettings', {
+Object.defineProperty(globalThis, 'PluginSettings', {
   value: {
     main: {
       readConfig,
